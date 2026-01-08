@@ -24,7 +24,7 @@ const bonos = [
   { title: "Picnic en la Playa.", desc: "Seremos 3, la Playa tu y yo, te amo Pulga.", img: "bono6.jpg", day: 13, reusable: false },
   { title: "Traguito bajo la luna, en la playa.", desc: "Preparado con amor y algo de desorden.", img: "bono7.jpg", day: 13, reusable: false },
   { title: "Cena Romántica.", desc: "Tu solo ponte hermosa como siempre y dejate sorprender.", img: "images/bono8.jpg", day: 13, reusable: false },
-  { title: "Pronto sabras más.", desc: "Pronto sabrás más.", img: "images/bono9.jpg", day: 24, reusable: false },
+  { title: "Recuerdo de nuestro viaje.", desc: "Algo que siempre nos recordará esta aventura.", img: "images/bono9.jpg", day: 24, reusable: false },
   { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono10.jpg", day: 27, reusable: false },
 
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono11.jpg", day: 30, reusable: false },
@@ -34,7 +34,7 @@ const bonos = [
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono15.jpg", day: 42, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono16.jpg", day: 45, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono17.jpg", day: 48, reusable: false },
- { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono18.jpg", day: 51, reusable: false },
+ { title: "Compraaaas.", desc: "Tendrás un tiempo o monto determinado a gastar, disfrutalo pulga.", img: "images/bono18.jpg", day: 51, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono19.jpg", day: 54, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono20.jpg", day: 57, reusable: false },
 
