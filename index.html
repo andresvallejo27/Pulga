@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz Cumpleaños mi Pulga 🖤</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+  <h1>Feliz Cumpleaños,<br><span>mi Pulga</span> 🖤</h1>
+
+  <p class="subtitle">
+    Estas son 30 pequeñas muestras del amor que siento por ti<br>
+    y de lo especial que me haces sentir.
+  </p>
+
+  <p class="signature">— tu guapo</p>
+</header>
+
+<main class="grid" id="bonos"></main>
+
+<!-- MODAL -->
+<div class="modal hidden" id="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+
+    <img id="modalImg" src="" alt="">
+    <h2 id="modalTitle"></h2>
+    <p id="modalDesc"></p>
+    <p id="unlockInfo" class="rules"></p>
+
+    <button id="redeemBtn"></button>
+  </div>
+</div>
+
+<footer>
+  <p>Este regalo no es una página. Es una promesa viva.</p>
+  <!-- Reset técnico (doble click) -->
+  <p class="secret" ondblclick="resetBonos()">💛</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
