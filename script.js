@@ -16,13 +16,13 @@ function daysFromStart(days) {
 
 /* BONOS */
 const bonos = [
-  { title: "Cena de Cumpleaños.", desc: "Una excelente oportunidad para celebrar tu vida.", img: "images/bono1.jpg", day: 0, reusable: false },
-  { title: "Accesorio que escojas.", desc: "Un accesorio que te haga lucir más hermosa de lo que eres.", img: "images/bono2.jpg", day: 0, reusable: false },
-  { title: "¿Un Pecadito?", desc: "Que tal un postrecito o algo dulce, tu solo pídelo.", img: "images/bono3.jpg", day: 5, reusable: false },
-  { title: "Revivir primera Cita.", desc: "Si si si, otra vez sushi, pero es nuestro primer momento juntos.", img: "images/bono1.jpg", day: 8, reusable: false },
-  { title: "Tiquetes a San Andrés.", desc: "Un viaje único para 2, un lugar mágico por conocer ¿Preparada?", img: "images/bono5.jpg", day: 12, reusable: false },
-  { title: "Picnic en la Playa.", desc: "Seremos 3, la Playa tu y yo, te amo Pulga.", img: "images/bono6.jpg", day: 13, reusable: false },
-  { title: "Traguito bajo la luna, en la playa.", desc: "Preparado con amor y algo de desorden.", img: "images/bono7.jpg", day: 13, reusable: false },
+  { title: "Cena de Cumpleaños.", desc: "Una excelente oportunidad para celebrar tu vida.", img: "bono1.jpg", day: 0, reusable: false },
+  { title: "Accesorio que escojas.", desc: "Un accesorio que te haga lucir más hermosa de lo que eres.", img: "bono2.jpg", day: 0, reusable: false },
+  { title: "¿Un Pecadito?", desc: "Que tal un postrecito o algo dulce, tu solo pídelo.", img: "bono3.jpg", day: 5, reusable: false },
+  { title: "Revivir primera Cita.", desc: "Si si si, otra vez sushi, pero es nuestro primer momento juntos.", img: "bono1.jpg", day: 8, reusable: false },
+  { title: "Tiquetes a San Andrés.", desc: "Un viaje único para 2, un lugar mágico por conocer ¿Preparada?", img: "bono5.jpg", day: 12, reusable: false },
+  { title: "Picnic en la Playa.", desc: "Seremos 3, la Playa tu y yo, te amo Pulga.", img: "bono6.jpg", day: 13, reusable: false },
+  { title: "Traguito bajo la luna, en la playa.", desc: "Preparado con amor y algo de desorden.", img: "bono7.jpg", day: 13, reusable: false },
   { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono8.jpg", day: 13, reusable: false },
   { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono9.jpg", day: 24, reusable: false },
   { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono10.jpg", day: 27, reusable: false },
@@ -141,3 +141,4 @@ window.resetBonos = () => {
   alert("Los bonos se reiniciaron correctamente 💖");
   location.reload();
 };
+
