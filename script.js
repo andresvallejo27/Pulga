@@ -25,7 +25,7 @@ const bonos = [
   { title: "Traguito bajo la luna, en la playa.", desc: "Preparado con amor y algo de desorden.", img: "bono7.jpg", day: 13, reusable: false },
   { title: "Cena Romántica.", desc: "Tu solo ponte hermosa como siempre y dejate sorprender.", img: "images/bono8.jpg", day: 13, reusable: false },
   { title: "Recuerdo de nuestro viaje.", desc: "Algo que siempre nos recordará esta aventura.", img: "images/bono9.jpg", day: 24, reusable: false },
-  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono10.jpg", day: 27, reusable: false },
+  { title: "Bono de Temu.", desc: "Tienes un bono para Temu, lo puedes canjear cuando quieras.", img: "images/bono10.jpg", day: 1, reusable: false },
 
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono11.jpg", day: 30, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono12.jpg", day: 33, reusable: false },
@@ -141,4 +141,5 @@ window.resetBonos = () => {
   alert("Los bonos se reiniciaron correctamente 💖");
   location.reload();
 };
+
 
