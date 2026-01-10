@@ -1,19 +1,24 @@
 const startDateKey = "start-date";
 
 /* =========================
-   FECHA BASE (SIN HORA)
+   FECHA BASE FIJA (DEFINIDA POR TI)
    ========================= */
+
+// 🔴 CAMBIA ESTA FECHA SI LO NECESITAS
+// Formato: new Date(AÑO, MES-1, DÍA)
+const FIXED_START_DATE = new Date(2026, 0, 8); // 8 de enero de 2026
+FIXED_START_DATE.setHours(0, 0, 0, 0);
+
+// Guarda la fecha base solo una vez
 let startDate = localStorage.getItem(startDateKey);
 
 if (!startDate) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // 🔑 medianoche
-  startDate = today.toISOString();
-  localStorage.setItem(startDateKey, startDate);
+  localStorage.setItem(startDateKey, FIXED_START_DATE.toISOString());
+  startDate = FIXED_START_DATE.toISOString();
 }
 
 const baseDate = new Date(startDate);
-baseDate.setHours(0, 0, 0, 0); // seguridad extra
+baseDate.setHours(0, 0, 0, 0);
 
 function daysFromStart(days) {
   const d = new Date(baseDate);
@@ -21,6 +26,7 @@ function daysFromStart(days) {
   d.setHours(0, 0, 0, 0);
   return d;
 }
+
 
 /* BONOS */
 const bonos = [
@@ -172,3 +178,4 @@ window.resetBonos = () => {
   alert("Sistema reiniciado correctamente 💖");
   location.reload();
 };
+
