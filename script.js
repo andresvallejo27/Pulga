@@ -35,7 +35,7 @@ const bonos = [
   { title: "Tiquetes a San Andrés.", desc: "Un viaje único para 2, un lugar mágico por conocer ¿Preparada?", img: "bono5.jpg", day: 12, reusable: false },
   { title: "Picnic en la Playa.", desc: "Seremos 3, la Playa tu y yo, te amo Pulga.", img: "bono6.jpg", day: 13, reusable: false },
   { title: "Traguito bajo la luna, en la playa.", desc: "Preparado con amor y algo de desorden.", img: "bono7.jpg", day: 13, reusable: false },
-  { title: "Cena Romántica.", desc: "Tu solo ponte hermosa como siempre y dejate sorprender.", img: "bono8.jpg", day: 13, reusable: false },
+  { title: "Cena Romántica.", desc: "Tu solo ponte hermosa como siempre y dejate sorprender.", img: "bono8.png", day: 13, reusable: false },
   { title: "Recuerdo de nuestro viaje.", desc: "Algo que siempre nos recordará esta aventura.", img: "bono9.png", day: 24, reusable: false },
   { title: "Bono de Temu.", desc: "Tienes un bono para Temu, lo puedes canjear cuando quieras.", img: "Bono10.png", day: 1, reusable: false },
 
@@ -172,3 +172,4 @@ window.resetBonos = () => {
   alert("Bonos reiniciados correctamente 💖");
   location.reload();
 };
+
