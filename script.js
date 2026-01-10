@@ -1,16 +1,24 @@
 const startDateKey = "start-date";
 
-/* Fecha base */
+/* =========================
+   FECHA BASE (SIN HORA)
+   ========================= */
 let startDate = localStorage.getItem(startDateKey);
+
 if (!startDate) {
-  startDate = new Date().toISOString();
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // 🔑 medianoche
+  startDate = today.toISOString();
   localStorage.setItem(startDateKey, startDate);
 }
+
 const baseDate = new Date(startDate);
+baseDate.setHours(0, 0, 0, 0); // seguridad extra
 
 function daysFromStart(days) {
   const d = new Date(baseDate);
   d.setDate(d.getDate() + days);
+  d.setHours(0, 0, 0, 0);
   return d;
 }
 
@@ -50,6 +58,9 @@ const bonos = [
  { title: "Este es Exclusivo para cuando termines de abrirlos...", desc: "Este bono no vence nunca, mi Pulga 🖤", img: "images/bono30.jpg", day: 87, reusable: true }
 ];
 
+/* =========================
+   ELEMENTOS DOM
+   ========================= */
 const grid = document.getElementById("bonos");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
@@ -61,7 +72,9 @@ const closeModal = document.getElementById("closeModal");
 
 let activeIndex = null;
 
-/* Render cards */
+/* =========================
+   RENDER TARJETAS
+   ========================= */
 bonos.forEach((bono, i) => {
   const card = document.createElement("div");
   card.className = "card";
@@ -70,7 +83,9 @@ bonos.forEach((bono, i) => {
   grid.appendChild(card);
 });
 
-/* Modal logic */
+/* =========================
+   MODAL
+   ========================= */
 function openModal(i) {
   activeIndex = i;
   const bono = bonos[i];
@@ -80,7 +95,10 @@ function openModal(i) {
   modalDesc.textContent = bono.desc;
 
   const used = localStorage.getItem(`bono-${i}`) === "true";
+
   const now = new Date();
+  now.setHours(0, 0, 0, 0); // 🔑 clave
+
   const activeDate = daysFromStart(bono.day);
   const locked = now < activeDate;
 
@@ -88,20 +106,26 @@ function openModal(i) {
     redeemBtn.disabled = true;
     redeemBtn.textContent = "Disponible pronto 💛";
     unlockInfo.textContent = `Disponible a partir del ${activeDate.toLocaleDateString()}`;
-  } else if (used && !bono.reusable) {
+  } 
+  else if (used && !bono.reusable) {
     redeemBtn.disabled = true;
     redeemBtn.textContent = "Bono canjeado 💛";
     unlockInfo.textContent = "";
-  } else {
+  } 
+  else {
     redeemBtn.disabled = false;
-    redeemBtn.textContent = bono.reusable ? "Usar este bono 💛" : "Canjear este bono 💛";
+    redeemBtn.textContent = bono.reusable
+      ? "Usar este bono 💛"
+      : "Canjear este bono 💛";
     unlockInfo.textContent = "";
   }
 
   modal.classList.remove("hidden");
 }
 
-/* Canjear */
+/* =========================
+   CANJEAR
+   ========================= */
 redeemBtn.onclick = () => {
   const bono = bonos[activeIndex];
   spawnHeart();
@@ -115,7 +139,9 @@ redeemBtn.onclick = () => {
 
 closeModal.onclick = () => modal.classList.add("hidden");
 
-/* Corazón */
+/* =========================
+   CORAZÓN
+   ========================= */
 function spawnHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
@@ -126,10 +152,12 @@ function spawnHeart() {
   setTimeout(() => heart.remove(), 1200);
 }
 
-/* 🔄 RESET DE SEGURIDAD */
+/* =========================
+   RESET TÉCNICO
+   ========================= */
 window.resetBonos = () => {
   const confirmReset = confirm(
-    "¿Quieres reiniciar el sistema de bonos?\n(Solo para corregir errores técnicos 💛)"
+    "¿Quieres reiniciar el sistema de bonos?\n(Solo para corrección técnica 💛)"
   );
   if (!confirmReset) return;
 
@@ -137,14 +165,10 @@ window.resetBonos = () => {
     localStorage.removeItem(`bono-${i}`);
   }
 
-  localStorage.setItem(startDateKey, new Date().toISOString());
-  alert("Los bonos se reiniciaron correctamente 💖");
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  localStorage.setItem(startDateKey, today.toISOString());
+
+  alert("Sistema reiniciado correctamente 💖");
   location.reload();
 };
-
-
-
-
-
-
-
