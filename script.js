@@ -27,7 +27,7 @@ const bonos = [
   { title: "Recuerdo de nuestro viaje.", desc: "Algo que siempre nos recordará esta aventura.", img: "images/bono9.jpg", day: 24, reusable: false },
   { title: "Bono de Temu.", desc: "Tienes un bono para Temu, lo puedes canjear cuando quieras.", img: "images/bono10.png", day: 1, reusable: false },
 
- { title: "Masaje Relajante hecho por mi <3.", desc: "Para un día especial o para todos los días, este bono es redimible las veces que creas conveniente, no vence, eso si no abusar del masajista jajajaja.", img: "images/bono11.jpg", day: 30, reusable: false },
+ { title: "Masaje Relajante hecho por mi <3.", desc: "Para un día especial o para todos los días, este bono es redimible las veces que creas conveniente, no vence, eso si no abusar del masajista jajajaja.", img: "images/bono11.jpg", day: 1, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono12.jpg", day: 33, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono13.jpg", day: 36, reusable: false },
  { title: "Pronto sabrás más.", desc: "Pronto sabrás más.", img: "images/bono14.jpg", day: 39, reusable: false },
@@ -141,6 +141,7 @@ window.resetBonos = () => {
   alert("Los bonos se reiniciaron correctamente 💖");
   location.reload();
 };
+
 
 
 
