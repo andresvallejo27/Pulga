@@ -1,27 +1,25 @@
-const startDateKey = "start-date";
+/* =====================================================
+   FECHA BASE FIJA (NO DINÁMICA, NO localStorage)
+   ===================================================== */
 
-/* =========================
-   FECHA BASE FIJA (DEFINIDA POR TI)
-   ========================= */
+/*
+  ⚠️ ESTA ES LA CLAVE DE TODO
+  La fecha de inicio REAL es FIJA.
+  NO depende del día en que entren a la web.
+  NO se guarda en localStorage.
+  NO se recalcula jamás.
+*/
 
-// 🔴 CAMBIA ESTA FECHA SI LO NECESITAS
-// Formato: new Date(AÑO, MES-1, DÍA)
-const FIXED_START_DATE = new Date(2026, 0, 8); // 8 de enero de 2026
-FIXED_START_DATE.setHours(0, 0, 0, 0);
+// 8 de enero de 2026 (MES = 0 porque JS empieza en 0)
+const BASE_DATE = new Date(2026, 0, 8);
+BASE_DATE.setHours(0, 0, 0, 0);
 
-// Guarda la fecha base solo una vez
-let startDate = localStorage.getItem(startDateKey);
-
-if (!startDate) {
-  localStorage.setItem(startDateKey, FIXED_START_DATE.toISOString());
-  startDate = FIXED_START_DATE.toISOString();
-}
-
-const baseDate = new Date(startDate);
-baseDate.setHours(0, 0, 0, 0);
-
+/*
+  Devuelve la fecha exacta de desbloqueo
+  sumando días a la fecha base
+*/
 function daysFromStart(days) {
-  const d = new Date(baseDate);
+  const d = new Date(BASE_DATE);
   d.setDate(d.getDate() + days);
   d.setHours(0, 0, 0, 0);
   return d;
@@ -64,9 +62,9 @@ const bonos = [
  { title: "Este es Exclusivo para cuando termines de abrirlos...", desc: "Este bono no vence nunca, mi Pulga 🖤", img: "images/bono30.jpg", day: 87, reusable: true }
 ];
 
-/* =========================
+/* =====================================================
    ELEMENTOS DOM
-   ========================= */
+   ===================================================== */
 const grid = document.getElementById("bonos");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modalImg");
@@ -78,9 +76,9 @@ const closeModal = document.getElementById("closeModal");
 
 let activeIndex = null;
 
-/* =========================
-   RENDER TARJETAS
-   ========================= */
+/* =====================================================
+   RENDER DE TARJETAS
+   ===================================================== */
 bonos.forEach((bono, i) => {
   const card = document.createElement("div");
   card.className = "card";
@@ -89,36 +87,36 @@ bonos.forEach((bono, i) => {
   grid.appendChild(card);
 });
 
-/* =========================
+/* =====================================================
    MODAL
-   ========================= */
+   ===================================================== */
 function openModal(i) {
   activeIndex = i;
   const bono = bonos[i];
 
-  modalImg.src = bono.img;
+  modalImg.src = bono.img || "";
   modalTitle.textContent = bono.title;
   modalDesc.textContent = bono.desc;
 
   const used = localStorage.getItem(`bono-${i}`) === "true";
 
-  const now = new Date();
-  now.setHours(0, 0, 0, 0); // 🔑 clave
+  // Fecha actual NORMALIZADA (sin hora)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   const activeDate = daysFromStart(bono.day);
-  const locked = now < activeDate;
+  const locked = today < activeDate;
 
   if (locked) {
     redeemBtn.disabled = true;
     redeemBtn.textContent = "Disponible pronto 💛";
-    unlockInfo.textContent = `Disponible a partir del ${activeDate.toLocaleDateString()}`;
-  } 
-  else if (used && !bono.reusable) {
+    unlockInfo.textContent =
+      `Disponible a partir del ${activeDate.toLocaleDateString()}`;
+  } else if (used && !bono.reusable) {
     redeemBtn.disabled = true;
     redeemBtn.textContent = "Bono canjeado 💛";
     unlockInfo.textContent = "";
-  } 
-  else {
+  } else {
     redeemBtn.disabled = false;
     redeemBtn.textContent = bono.reusable
       ? "Usar este bono 💛"
@@ -129,9 +127,9 @@ function openModal(i) {
   modal.classList.remove("hidden");
 }
 
-/* =========================
-   CANJEAR
-   ========================= */
+/* =====================================================
+   CANJEAR BONO
+   ===================================================== */
 redeemBtn.onclick = () => {
   const bono = bonos[activeIndex];
   spawnHeart();
@@ -145,37 +143,32 @@ redeemBtn.onclick = () => {
 
 closeModal.onclick = () => modal.classList.add("hidden");
 
-/* =========================
+/* =====================================================
    CORAZÓN
-   ========================= */
+   ===================================================== */
 function spawnHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
   heart.textContent = "❤️";
   heart.style.left = `${Math.random() * window.innerWidth}px`;
-  heart.style.top = `${window.innerHeight - 50}px`;
+  heart.style.top = `${window.innerHeight - 60}px`;
   document.body.appendChild(heart);
   setTimeout(() => heart.remove(), 1200);
 }
 
-/* =========================
-   RESET TÉCNICO
-   ========================= */
+/* =====================================================
+   RESET TÉCNICO (NO TOCA FECHAS)
+   ===================================================== */
 window.resetBonos = () => {
-  const confirmReset = confirm(
-    "¿Quieres reiniciar el sistema de bonos?\n(Solo para corrección técnica 💛)"
+  const ok = confirm(
+    "¿Reiniciar bonos usados?\n(Solo corrección técnica 💛)"
   );
-  if (!confirmReset) return;
+  if (!ok) return;
 
   for (let i = 0; i < bonos.length; i++) {
     localStorage.removeItem(`bono-${i}`);
   }
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  localStorage.setItem(startDateKey, today.toISOString());
-
-  alert("Sistema reiniciado correctamente 💖");
+  alert("Bonos reiniciados correctamente 💖");
   location.reload();
 };
-
